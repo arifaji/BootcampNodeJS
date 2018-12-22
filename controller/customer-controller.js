@@ -50,7 +50,7 @@ exports.updateCustomer = function(req,res){
             });
         }
     });
-}
+};
 
 exports.insertCustomer= function(req, res){
     customerDao.insert(req.body, function(err, data){
