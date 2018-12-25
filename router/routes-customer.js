@@ -5,8 +5,8 @@ module.exports = function(app){
     
     app.route('/').get(controllerCustomer.index);
     app.route('/customers').get(controllerCustomer.customers);
-    app.route('/customer').post(controllerCustomer.insertCustomer);
-    app.route('/customer/:id').get(controllerCustomer.getCustomerById);
-    app.route('/customer').put(controllerCustomer.updateCustomer);
+    app.route('/customer').post(controllerCustomer.insert);
+    app.route('/customer/:id').get(controllerCustomer.getById);
+    app.route('/customer').put(controllerCustomer.update);
     app.route('/customer/:id').delete(controllerCustomer.del);
 }

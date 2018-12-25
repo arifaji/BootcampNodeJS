@@ -1,7 +1,7 @@
 var express = require('express'),
     app = express(),
     port = process.env.PORT || 3000,
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser')
     //morgan
     morgan = require('morgan');
 
@@ -16,10 +16,6 @@ logger.debug("Overriding 'Express' logger");
 
 var routesCustomer = require('./router/routes-customer');
 routesCustomer(app);
-var routerAccount = require('./router/routes-account');
-routerAccount(app);
-var routerTransaction = require('./router/routes-transaction');
-routerTransaction(app);
 
 app.listen(port);
 logger.debug('Learn Node JS With Kiddy, RESTful API server started on: ' + port);

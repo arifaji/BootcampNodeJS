@@ -1,8 +1,12 @@
 var response = require('../model/res');
-var customerDao = require('../dao/customer-dao');
+// var customerDao = require('../dao/customer-dao');
+var customerDao = require('../dao/customer-dao-sequelize');
+var logger = require('../util/logging/winston-logger');
+var util = require('util');
+
 
 exports.index = function(req, res) {
-    response.ok("Hello from the Node JS RESTful side!", res)
+    response.ok("Hello from the Node JS RESTful side!with seq", res)
 };
 
 
@@ -19,7 +23,7 @@ exports.customers = function(req, res){
     });
 };
 
-exports.getCustomerById = function(req, res){
+exports.getById = function(req, res){
     //request 2 kan, error sama data, kirimnya ke customer dao.
          //kalau params pakai slash (/) kalo req.query.id pakai ?id=nomernya
     customerDao.getById(req.params['id'], function (err,data){
@@ -33,39 +37,45 @@ exports.getCustomerById = function(req, res){
     });
 };
 
-exports.updateCustomer = function(req,res){
-    customerDao.getById(req.body.customer_number, function(err,data){
+exports.update = function(req,res){
+    // customerDao.getById(req.body.customer_number, function(err,data){
+        customerDao.getById(req.body.customerNumber, function(err,data){
         if(err){
             console.log('error call getById: '+err);
             response.err(err,res);
         } else if (data==null) {
         response.datanotfound('customer not found', res);
         } else {
-            customerDao.update(req.body.customer_number, req.body, function(err, data){
+            // customerDao.update(req.body.customer_number, req.body, function(err, data){
+            customerDao.update(req.body.customerNumber, req.body, function(err, data){
                 if(err){
                     console.log('error call update : '+err);
                     response.err(error, res);
                 }
-                response.ok('upload data : '+data.message, res);
+                //  response.ok('upload data : '+data.message, res);
+                 response.ok('upload data : '+data.customerNumber, res);
             });
         }
     });
 };
 
-exports.insertCustomer= function(req, res){
+exports.insert = function(req, res){
+    logger.info('request for insert :');
+    logger.debug(req.body);
     customerDao.insert(req.body, function(err, data){
         if(err){
             console.log('error call insert : '+err);
             response.err(err,res);
         }
-        response.ok('data inserted with id'+data.insertId, res);
+        response.ok('data inserted with id'+data.customerNumber, res);
     });
 };
 
 exports.del = function(req, res) {
+    logger.info(util.format('deleting customer id %s', req.params['id']));
     customerDao.getById(req.params['id'], function(err, data){//check customer exists
         if(err){
-            console.log('error call getById : '+err);
+            logger.error('error call getById : '+err);
             response.err(err, res);
         }  else if(data==null){
             response.datanotfound('customer not found', res);
@@ -73,10 +83,11 @@ exports.del = function(req, res) {
             //if exists, continue delete
             customerDao.del(req.params['id'], function(err, data){
                 if(err){
-                    console.log('error call delete : '+err);
+                    logger.error('error call delete : '+err);
                     response.err(error, res);
                 } 
-                response.ok(data, res);
+                // response.ok(data, res);
+                response.ok('customer deleted with id : '+data, res);
             });
         }
     });
