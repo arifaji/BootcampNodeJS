@@ -14,8 +14,13 @@ app.use(morgan('combined',{ "stream": logger.stream }));
 logger.debug("Overriding 'Express' logger");
 //end-tambahan
 
-var routesCustomer = require('./router/routes-customer');
-routesCustomer(app);
+/** routes **/
+var customerRoute = require('./router/routes-customer');
+customerRoute(app);
+
+var accountRoute = require('./router/routes-account');
+accountRoute(app);
+
 
 app.listen(port);
 logger.debug('Learn Node JS With Kiddy, RESTful API server started on: ' + port);
