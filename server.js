@@ -21,6 +21,9 @@ customerRoute(app);
 var accountRoute = require('./router/routes-account');
 accountRoute(app);
 
+var transactionRoute = require('./router/routes-transaction');
+transactionRoute(app);
+
 
 app.listen(port);
 logger.debug('Learn Node JS With Kiddy, RESTful API server started on: ' + port);

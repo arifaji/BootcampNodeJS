@@ -184,3 +184,29 @@
 {"message":1,"level":"info"}
 {"message":"::1 - - [25/Dec/2018:18:10:42 +0000] \"DELETE /customer/7 HTTP/1.1\" 200 54 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
 {"message":"::1 - - [25/Dec/2018:18:10:46 +0000] \"GET /customers HTTP/1.1\" 200 589 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:00:10 +0000] \"POST /customers HTTP/1.1\" 404 149 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:00:19 +0000] \"GET /customers HTTP/1.1\" 200 589 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:00:25 +0000] \"GET /transactions HTTP/1.1\" 200 401 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:00:57 +0000] \"GET /transaction/2 HTTP/1.1\" 200 110 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:01:08 +0000] \"GET /transactions HTTP/1.1\" 200 401 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"request for insert :","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:23:17 +0000] \"POST /transaction HTTP/1.1\" 500 2362 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:23:30 +0000] \"GET /transactions HTTP/1.1\" 200 401 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"request for insert :","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:23:47 +0000] \"POST /transaction HTTP/1.1\" 500 2362 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"request for insert :","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:24:52 +0000] \"POST /transaction HTTP/1.1\" 200 49 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:25:05 +0000] \"GET /transactions HTTP/1.1\" 200 589 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"request for insert :","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:25:19 +0000] \"POST /transaction HTTP/1.1\" 200 49 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:25:23 +0000] \"GET /transactions HTTP/1.1\" 200 777 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"request for update :","level":"info"}
+{"message":"result  update:","level":"info"}
+{"message":[null,1],"level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:30:03 +0000] \"PUT /transaction HTTP/1.1\" 200 42 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:30:08 +0000] \"GET /transactions HTTP/1.1\" 200 777 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"request for update :","level":"info"}
+{"message":"result  update:","level":"info"}
+{"message":[null,1],"level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:30:18 +0000] \"PUT /transaction HTTP/1.1\" 200 42 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [26/Dec/2018:02:30:23 +0000] \"GET /transactions HTTP/1.1\" 200 780 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
