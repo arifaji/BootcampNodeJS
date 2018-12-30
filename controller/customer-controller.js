@@ -11,17 +11,32 @@ exports.index = function(req, res) {
 
 
 //
+// exports.customers = function(req, res){
+//     //getall terima 1 parameter doang buat callback
+//     customerDao.getAll(function (error, rows){
+//         if(error){
+//             console.log('error while select: '+error);
+//             response.err(error, res);
+//         } else {
+//             response.ok(rows,res)
+//         }
+//     });
+// };
+
 exports.customers = function(req, res){
-    //getall terima 1 parameter doang buat callback
-    customerDao.getAll(function (error, rows){
-        if(error){
-            console.log('error while select: '+error);
-            response.err(error, res);
-        } else {
-            response.ok(rows,res)
-        }
-    });
-};
+        //getall terima 1 parameter doang buat callback
+        customerDao.getAll(function (error, rows){
+            if(error){
+                console.log('error while select: '+error);
+                response.err(error, res);
+            } else {
+                response.ok(rows,res)
+                // return res.json(rows);
+            }
+        });
+    };
+
+
 
 exports.getById = function(req, res){
     //request 2 kan, error sama data, kirimnya ke customer dao.
@@ -34,6 +49,7 @@ exports.getById = function(req, res){
         }
         //kalo berhasil data disimpen
         response.ok(data,res);
+        // return res.json(data);
     });
 };
 
@@ -53,7 +69,8 @@ exports.update = function(req,res){
                     response.err(error, res);
                 }
                 //  response.ok('upload data : '+data.message, res);
-                 response.ok('upload data : '+data.customerNumber, res);
+                  response.ok('upload data : '+data.customerNumber, res);
+                //  return res.json('upload data : '+data.customerNumber, res);
             });
         }
     });
@@ -68,6 +85,7 @@ exports.insert = function(req, res){
             response.err(err,res);
         }
         response.ok('data inserted with id'+data.customerNumber, res);
+        // return res.json('data inserted with id'+data.customerNumber, res);
     });
 };
 

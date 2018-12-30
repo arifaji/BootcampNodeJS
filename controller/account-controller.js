@@ -4,7 +4,20 @@ var logger = require('../util/logging/winston-logger');
 var util = require('util');
 
 exports.accounts = function(req, res) {
-    accountDao.getAll(function (error, rows){
+    let whereClause = {};
+    if (req.query.accountNumber){
+        whereClause.accountNumber = req.query.accountNumber;
+    }
+    if (req.query.openDate){
+        whereClause.openDate = req.query.openDate;
+    }
+    if (req.query.balance){
+        whereClause.balance = req.query.balance;
+    }
+    if (req.query.customer){
+        whereClause.customer_id = req.query.customer;
+    }
+    accountDao.getAll(whereClause, function (error, rows){
         if(error){
             logger.error('error while select: '+error);
             response.err(error, res);

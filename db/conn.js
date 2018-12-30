@@ -4,7 +4,7 @@ var con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "bootcamp"
+  database: "day4msql"
 });
 
 con.connect(function (err){

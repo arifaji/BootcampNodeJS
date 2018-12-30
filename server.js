@@ -3,7 +3,16 @@ var express = require('express'),
     port = process.env.PORT || 3000,
     bodyParser = require('body-parser')
     //morgan
-    morgan = require('morgan');
+    var morgan = require('morgan');
+
+var cors = require('cors');
+app.use(cors());
+
+app.use(function(req, res, next){
+    res.header("Acces-Control-Allow-Origin", "*");
+    res.header("Acces-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

@@ -1,31 +1,31 @@
 module.exports = (sequelize, type) => {
     return sequelize.define('customer', {
         customerNumber: {
-            field:'customer_number',
+            field:'customernumber',
             type: type.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
         firstName: {
-            field:'first_name',
+            field:'firstname',
             type: type.STRING
         },
         lastName: {
-            field:'last_name',
+            field:'lastname',
             type: type.STRING
         },
         birthDate: {
-            field:'birth_date',
+            field:'birthdate',
             type: type.DATE
         },
         username: type.STRING,
         password: type.STRING,
-        phoneNumber: {
-            field:'phone_number',
-            type: type.INTEGER
-        },
         phoneType: {
-            field:'phone_type',
+            field:'phonetype',
+            type: type.STRING
+        },
+        phoneNumber: {
+            field:'phonenumber',
             type: type.STRING
         }
     }, {

@@ -1,7 +1,7 @@
 module.exports = (sequelize, type) => {
     return sequelize.define('transaction', {
-        idTransaction: {
-            field:'id_transaction',
+        id: {
+            field:'id',
             type: type.INTEGER,
             primaryKey: true,
             autoIncrement: true
@@ -15,17 +15,18 @@ module.exports = (sequelize, type) => {
             field:'amount',
             type: type.INTEGER
         },
-        amountSign: {
-            field:'amount_sign',
+        amountsign: {
+            field:'amountsign',
             type: type.STRING
         },
-        account_id:{
-          type:type.INTEGER,
-          onDelete: 'CASCADE',
+        accountNumber:{
+            field:'account_id',
+            type:type.INTEGER,
+            onDelete: 'CASCADE',
   
           references:{
             model:'account',
-            key: 'account_number'
+            key: 'accountNumber'
           }
         }
     }, {

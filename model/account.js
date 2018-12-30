@@ -3,14 +3,14 @@
 module.exports = (sequelize, type) => {
     return sequelize.define('account', {
         accountNumber: {
-            field:'account_number',
+            field:'accountnumber',
             // type: type.UUID,
             type: type.INTEGER,
             primaryKey: true,
             // defaultValue: uuid()
         },
         openDate: {
-            field:'open_date',
+            field:'opendate',
             type: type.DATE
         },
         balance: {
@@ -18,13 +18,14 @@ module.exports = (sequelize, type) => {
             type: type.INTEGER
         }
         ,
-        customer_id:{
+        customerNumber:{
+            field:'customer_id',
           type:type.INTEGER,
           onDelete: 'CASCADE',
   
           references:{
             model:'customer',
-            key: 'customer_number'
+            key: 'customerNumber'
           }
         }
     }, {

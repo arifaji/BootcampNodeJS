@@ -3,7 +3,7 @@ const CustomerModel = require('../model/customer')
 const AccountModel = require('../model/account')
 const TransactionModel = require('../model/transaction')
 
-const sequelize = new Sequelize('bootcamp', 'root', '', {
+const sequelize = new Sequelize('day4msql', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
   pool: {
@@ -16,9 +16,9 @@ const sequelize = new Sequelize('bootcamp', 'root', '', {
 
 const Customer = CustomerModel(sequelize, Sequelize)
 const Account = AccountModel(sequelize, Sequelize)
-Account.belongsTo(Customer, {foreignKey: 'customer_id', targetKey:'customerNumber'});
+Account.belongsTo(Customer, {foreignKey: 'customerNumber', targetKey:'customerNumber'});
 const Transaction = TransactionModel(sequelize, Sequelize)
-Transaction.belongsTo(Account,{foreignKey: 'account_id', targetKey:'accountNumber'});
+Transaction.belongsTo(Account,{foreignKey: 'accountNumber', targetKey:'accountNumber'});
 
 
 module.exports = {

@@ -4,7 +4,24 @@ var logger = require('../util/logging/winston-logger');
 var util = require('util');
 
 exports.transactions = function(req, res) {
-    transactionDao.getAll(function (error, rows){
+    let whereClause = {};
+    if(req.query.id){
+        whereClause.id=req.query.id;
+    }
+    if(req.query.type){
+        whereClause.type=req.query.type;
+    }
+    if(req.query.amount){
+        whereClause.amount=req.query.amount;
+    }
+    if(req.query.amountsign){
+        whereClause.amountSign=req.query.amountSign;
+    }
+    if(req.query.account){
+        whereClause.account_id=req.query.account;
+    }
+    
+    transactionDao.getAll(whereClause, function (error, rows){
         if(error){
             logger.error('error while select: '+error);
             response.err(error, res);
@@ -33,14 +50,14 @@ exports.insert = function(req, res) {
             logger.error('error call insert : '+err);
             response.err(err, res);
         } 
-        response.ok('data inserted with id '+data.idTransaction, res);
+        response.ok('data inserted with id '+data.id, res);
     });
 };
 
 exports.update = function(req, res) {
     logger.info('request for update :');
     logger.debug(req.body);
-    transactionDao.getById(req.body.idTransaction, function(err, data){//check account exists
+    transactionDao.getById(req.body.id, function(err, data){//check account exists
         if(err){
             logger.error('error call getById : '+err);
             response.err(err, res);
@@ -48,12 +65,12 @@ exports.update = function(req, res) {
             response.datanotfound('account not found', res);
         }else{
             //if exists, then continue update
-            transactionDao.update(req.body.idTransaction, req.body, function(err, data){
+            transactionDao.update(req.body.id, req.body, function(err, data){
                 if(err){
                     logger.error('error call update : '+err);
                     response.err(error, res);
                 } 
-                response.ok('updated data : '+ data.idTransaction, res);
+                response.ok('updated data : '+ data.id, res);
             });
         }
     });
